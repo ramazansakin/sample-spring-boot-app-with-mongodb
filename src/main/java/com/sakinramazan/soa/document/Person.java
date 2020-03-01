@@ -3,17 +3,22 @@ package com.sakinramazan.soa.document;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Document(collection = "person")
 public class Person extends ResourceSupport implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
     @Id
     private String idPerson;
+
+    @Indexed(unique = true)
     private String firstName;
     private String lastName;
     private String address;

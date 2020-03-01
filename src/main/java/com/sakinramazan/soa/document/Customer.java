@@ -1,16 +1,19 @@
 package com.sakinramazan.soa.document;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.hateoas.ResourceSupport;
 
 import java.io.Serializable;
 
-
+@Document(collection = "customer")
 public class Customer extends ResourceSupport implements Serializable {
 
     @Id
     private String idCustomer;
 
+    @Indexed(unique = true)
     private String firstName;
     private String lastName;
 
